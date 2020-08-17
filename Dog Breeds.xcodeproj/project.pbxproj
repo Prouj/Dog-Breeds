@@ -9,12 +9,18 @@
 /* Begin PBXBuildFile section */
 		A40A740724E423230070B1A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A740624E423230070B1A9 /* AppDelegate.swift */; };
 		A40A740924E423230070B1A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A740824E423230070B1A9 /* SceneDelegate.swift */; };
-		A40A740B24E423230070B1A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A740A24E423230070B1A9 /* ViewController.swift */; };
-		A40A740E24E423230070B1A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A40A740C24E423230070B1A9 /* Main.storyboard */; };
+		A40A740B24E423230070B1A9 /* BreedsDescriptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A740A24E423230070B1A9 /* BreedsDescriptionsViewController.swift */; };
 		A40A741024E423250070B1A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A40A740F24E423250070B1A9 /* Assets.xcassets */; };
 		A40A741324E423250070B1A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A40A741124E423250070B1A9 /* LaunchScreen.storyboard */; };
 		A40A741E24E423260070B1A9 /* Dog_BreedsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A741D24E423260070B1A9 /* Dog_BreedsTests.swift */; };
 		A40A742924E423260070B1A9 /* Dog_BreedsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A742824E423260070B1A9 /* Dog_BreedsUITests.swift */; };
+		A40A743A24E43BC40070B1A9 /* Descriptions.json in Resources */ = {isa = PBXBuildFile; fileRef = A40A743924E43BC40070B1A9 /* Descriptions.json */; };
+		A40A743C24E490E10070B1A9 /* LoaderJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A743B24E490E10070B1A9 /* LoaderJson.swift */; };
+		A40A743E24E492690070B1A9 /* Breeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A743D24E492690070B1A9 /* Breeds.swift */; };
+		A41D9C7424E54F30009693E8 /* ListBreedsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41D9C7324E54F30009693E8 /* ListBreedsTableViewController.swift */; };
+		A41D9C7624E55BB5009693E8 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41D9C7524E55BB5009693E8 /* InitialViewController.swift */; };
+		A41D9C7924E793BB009693E8 /* LoaderAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41D9C7824E793BB009693E8 /* LoaderAPI.swift */; };
+		A467996824E8B1C000C6C311 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467996724E8B1C000C6C311 /* HeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +44,7 @@
 		A40A740324E423230070B1A9 /* Dog Breeds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dog Breeds.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A40A740624E423230070B1A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A40A740824E423230070B1A9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A40A740A24E423230070B1A9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A40A740D24E423230070B1A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A40A740A24E423230070B1A9 /* BreedsDescriptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsDescriptionsViewController.swift; sourceTree = "<group>"; };
 		A40A740F24E423250070B1A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A40A741224E423250070B1A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A40A741424E423250070B1A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +54,13 @@
 		A40A742424E423260070B1A9 /* Dog BreedsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dog BreedsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A40A742824E423260070B1A9 /* Dog_BreedsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dog_BreedsUITests.swift; sourceTree = "<group>"; };
 		A40A742A24E423260070B1A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A40A743924E43BC40070B1A9 /* Descriptions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Descriptions.json; sourceTree = "<group>"; };
+		A40A743B24E490E10070B1A9 /* LoaderJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderJson.swift; sourceTree = "<group>"; };
+		A40A743D24E492690070B1A9 /* Breeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeds.swift; sourceTree = "<group>"; };
+		A41D9C7324E54F30009693E8 /* ListBreedsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListBreedsTableViewController.swift; sourceTree = "<group>"; };
+		A41D9C7524E55BB5009693E8 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		A41D9C7824E793BB009693E8 /* LoaderAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoaderAPI.swift; path = ../../../Documents/LoaderAPI.swift; sourceTree = "<group>"; };
+		A467996724E8B1C000C6C311 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +91,9 @@
 		A40A73FA24E423230070B1A9 = {
 			isa = PBXGroup;
 			children = (
+				A40A743824E426C90070B1A9 /* View */,
+				A40A743724E426C60070B1A9 /* Controller */,
+				A40A743624E426A60070B1A9 /* Model */,
 				A40A740524E423230070B1A9 /* Dog Breeds */,
 				A40A741C24E423260070B1A9 /* Dog BreedsTests */,
 				A40A742724E423260070B1A9 /* Dog BreedsUITests */,
@@ -101,8 +116,7 @@
 			children = (
 				A40A740624E423230070B1A9 /* AppDelegate.swift */,
 				A40A740824E423230070B1A9 /* SceneDelegate.swift */,
-				A40A740A24E423230070B1A9 /* ViewController.swift */,
-				A40A740C24E423230070B1A9 /* Main.storyboard */,
+				A40A743924E43BC40070B1A9 /* Descriptions.json */,
 				A40A740F24E423250070B1A9 /* Assets.xcassets */,
 				A40A741124E423250070B1A9 /* LaunchScreen.storyboard */,
 				A40A741424E423250070B1A9 /* Info.plist */,
@@ -128,6 +142,34 @@
 			path = "Dog BreedsUITests";
 			sourceTree = "<group>";
 		};
+		A40A743624E426A60070B1A9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A40A743B24E490E10070B1A9 /* LoaderJson.swift */,
+				A40A743D24E492690070B1A9 /* Breeds.swift */,
+				A41D9C7824E793BB009693E8 /* LoaderAPI.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A40A743724E426C60070B1A9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A467996724E8B1C000C6C311 /* HeaderView.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A40A743824E426C90070B1A9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A40A740A24E423230070B1A9 /* BreedsDescriptionsViewController.swift */,
+				A41D9C7324E54F30009693E8 /* ListBreedsTableViewController.swift */,
+				A41D9C7524E55BB5009693E8 /* InitialViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,6 +180,7 @@
 				A40A73FF24E423230070B1A9 /* Sources */,
 				A40A740024E423230070B1A9 /* Frameworks */,
 				A40A740124E423230070B1A9 /* Resources */,
+				A41D9C7724E56494009693E8 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -233,8 +276,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A40A741324E423250070B1A9 /* LaunchScreen.storyboard in Resources */,
+				A40A743A24E43BC40070B1A9 /* Descriptions.json in Resources */,
 				A40A741024E423250070B1A9 /* Assets.xcassets in Resources */,
-				A40A740E24E423230070B1A9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,13 +297,40 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A41D9C7724E56494009693E8 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: Swiftlint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A40A73FF24E423230070B1A9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A40A740B24E423230070B1A9 /* ViewController.swift in Sources */,
+				A40A743E24E492690070B1A9 /* Breeds.swift in Sources */,
+				A40A743C24E490E10070B1A9 /* LoaderJson.swift in Sources */,
+				A40A740B24E423230070B1A9 /* BreedsDescriptionsViewController.swift in Sources */,
+				A467996824E8B1C000C6C311 /* HeaderView.swift in Sources */,
+				A41D9C7924E793BB009693E8 /* LoaderAPI.swift in Sources */,
 				A40A740724E423230070B1A9 /* AppDelegate.swift in Sources */,
+				A41D9C7624E55BB5009693E8 /* InitialViewController.swift in Sources */,
+				A41D9C7424E54F30009693E8 /* ListBreedsTableViewController.swift in Sources */,
 				A40A740924E423230070B1A9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,14 +367,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A40A740C24E423230070B1A9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A40A740D24E423230070B1A9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A40A741124E423250070B1A9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -435,6 +497,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				INFOPLIST_FILE = "Dog Breeds/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -443,7 +506,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Dog-Breeds.Dog-Breeds";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -452,6 +515,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				INFOPLIST_FILE = "Dog Breeds/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -460,7 +524,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Dog-Breeds.Dog-Breeds";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

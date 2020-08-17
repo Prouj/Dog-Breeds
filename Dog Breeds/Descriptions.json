@@ -1,0 +1,14 @@
+[
+    {
+        "name" : "Golden Retriever",
+        "descripition": "very frendly",
+        "image": "https://images.dog.ceo/breeds/retriever-golden/n02099601_864.jpg",
+        "favorite": true
+    },
+    {
+        "name" : "Maltês",
+        "descripition": "very frendly",
+        "image": "maltes",
+        "favorite": false
+    }
+]

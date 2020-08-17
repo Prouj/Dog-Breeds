@@ -8,83 +8,207 @@
 
 import UIKit
 
-class ListBreedsTableViewController: UITableViewController {
-
+class ListBreedsViewController: UIViewController, UISearchBarDelegate {
+    
+    let tableView = UITableView()
+    let search = UISearchBar()
+    var segmentedControl = UISegmentedControl()
+    
+    var breeds = LoaderJson().itemData //Todos os dados do Json
+    var item = Breeds() //Salva os dados do item que vai ser passado pra tela de descrição
+    var breedsData = LoaderJson().itemData //Dados dos itens que vão ser carregados na tableView (altera de acordo com a pesquisa)
+    var section:Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .white
+        
+        loadSection()
+        configureTableView()
+        configureSearch()
+        NavButton()
+        configSegmentedControl()
+//        loadSection()
+    }
+    
+     //Cria um botão
+    func NavButton() {
+        let Button = UIButton(type: .custom)
+        Button.frame = CGRect(x: 0.0, y: 0.0, width: 50, height: 50)
+        Button.setImage(UIImage(named:"collection"), for: .normal)
+        Button.addTarget(self, action: #selector(myRightSideBarButtonItemTapped), for: UIControl.Event.touchUpInside)
+                 
+        // Seta o botão modelo como um botão da Navigation Bar
+        let BarButton = UIBarButtonItem(customView: Button)
+        let currWidth = BarButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        currWidth?.isActive = true
+        let currHeight = BarButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        currHeight?.isActive = true
+        title = "Dog Breeds"
+        self.navigationItem.rightBarButtonItem = BarButton
+        navigationItem.hidesBackButton = true
+    }
+    
+    //Conecta a tela de collection
+    @objc func myRightSideBarButtonItemTapped() {
+        let vc = InitialViewController()
+        self.navigationController?.pushViewController(vc, animated: false)
+    }
+    
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+        breeds = LoaderJson().itemData //reload dos dados
+        loadSection()
+    }
+    
+    func configureTableView(){
+        view.addSubview(tableView)
+        setTableViewDelegates()
+        tableView.rowHeight = 50
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo:view.leadingAnchor, constant: 0).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
     }
 
-    // MARK: - Table view data source
+    func setTableViewDelegates() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    func configureSearch() {
+        view.addSubview(search)
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        search.placeholder = " Pesquise..."
+        search.sizeToFit()
+        search.isTranslucent = false
+        search.backgroundImage = UIImage()
+//        search.showsCancelButton = false
+        search.delegate = self
+//        tableView.tableHeaderView = search
+        navigationItem.titleView = search
+//        search.translatesAutoresizingMaskIntoConstraints = false
+//        search.topAnchor.constraint(equalTo: self.segmentedControl.topAnchor, constant: 0).isActive = true
+//        search.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+//        search.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+//        search.bottomAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 0).isActive = true
+//        let tapKey: UIGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(Keyboard))
+//        view.addGestureRecognizer(tapKey)
+    }
+    
+//    @objc func Keyboard() {
+//        view.endEditing(true)
+//    }
+    
+    
+//    let tl = BreedsDescriptionsViewController()
+//    
+//    override func prepare(for segue: tl, sender: Any?) {
+//        let descricao = segue.destination as! BreedsDescriptionViewController
+//        descricao.item = item
+//    }
+    
+    
+    func configSegmentedControl() {
+        let section = ["Todos", "Favoritos"]
+        segmentedControl = UISegmentedControl(items: section)
+        segmentedControl.backgroundColor = UIColor(red: 250/255, green: 240/255, blue: 197/255, alpha: 1)
+        segmentedControl.selectedSegmentTintColor = UIColor(red: 220/255, green: 141/255, blue: 75/255, alpha: 1)
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        tableView.tableHeaderView = segmentedControl
+//        view.addSubview(segmentedControl)
+//        segmentedControl.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).isActive = true
+        segmentedControl.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor).isActive = true
+        segmentedControl.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor).isActive = true
+//        segmentedControl.bottomAnchor.constraint(equalTo: self.search.bottomAnchor, constant: 10).isActive = true
+
+//        segmentedControl.addTarget(self, action: <#T##Selector#>, for: <#T##UIControl.Event#>)
+    }
+    
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            self.searchBar(searchBar, selectedScopeButtonIndexDidChange: section!)
+            tableView.reloadData()
+        } else {
+            self.searchBar(searchBar, selectedScopeButtonIndexDidChange: section!)
+            breedsData = breedsData.filter({ itemData -> Bool in itemData.name!.lowercased().contains(searchText.lowercased())
+            })
+        }
+        tableView.reloadData() //atualiza a tableView
+    }
+    
+    
+
+        func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+            switch selectedScope {
+            case 0:
+                breedsData = breeds
+            case 1:
+                breedsData = breeds.filter({ itemData -> Bool in
+                    itemData.favorite!
+                })
+            default:
+                break
+            }
+            section = selectedScope
+            tableView.reloadData()
+        }
+
+           //carrega o escopo e os dados que vão aparecer na table view
+           func loadSection() {
+               self.searchBar(search, selectedScopeButtonIndexDidChange: section ?? 0)
+               search.selectedScopeButtonIndex = section ?? 0
+               tableView.reloadData()
+           }
+}
+
+extension ListBreedsViewController: UITableViewDelegate, UITableViewDataSource {
+
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return breedsData.count
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+    //Identifica a celula selecionada
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        self.item = breedsData[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
+//        performSegue(withIdentifier: "", sender: self)
+        let vc = BreedsDescriptionsViewController()
+        self.navigationController?.pushViewController(vc, animated: false)
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        // Configure the cell...
+        var cell = UITableViewCell()
+
+        if cell.detailTextLabel == nil {
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
+        }
+
+        cell.textLabel?.text = breedsData[indexPath.row].name //Indica qual nome do array será printado
+
+//       cell.textLabel?.textColor = UIColor(red: 0.308, green: 0.14, blue: 0.356, alpha: 100) //Muda a cor dos Títulos
+
+        let indicator = UIImage(named: "Indicator.pdf")  // Importa uma imagem personalizada do diclosureIndicator, pois o mesmo não pode ser editado
+        cell.accessoryType = .disclosureIndicator
+        cell.accessoryView = UIImageView(image: indicator!)
 
         return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
 
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+    
+
+
+
+
+
+    
+

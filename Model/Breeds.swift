@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+//Struct Breeds que guardas as variáveis que compõem cada item do json Description
+struct Breeds: Codable {
+    var name: String?
+    var descripition: String?
+    var image: String?
+    var favorite: Bool?
+}
