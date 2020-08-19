@@ -1,14 +1,32 @@
 [
     {
         "name" : "Golden Retriever",
-        "descripition": "very frendly",
+        "descripition": "Very Friendly",
         "image": "https://images.dog.ceo/breeds/retriever-golden/n02099601_864.jpg",
         "favorite": true
     },
     {
         "name" : "Maltês",
-        "descripition": "very frendly",
-        "image": "maltes",
+        "descripition": "O Maltês é uma raça de cães de companhia de pequeno porte, capaz de adaptar-se facilmente a vida de seus donos, embora necessite de constante exercício. Descrito como incapaz de permanecer sozinho, é ainda interativo tanto com animais quanto com pessoas. Este cão é dócil, brincalhão, hipoalergênico (solta pouquissímo pelo), late pouco e curioso. \nExpectativa de vida: de 12 a 15 anos \nOrigem: Bacia do Mediterrâneo \nCor: Branco \nPersonalidade: Dócil, Fácil de lidar, Afetuoso, Vivaz, Inteligente, Destemido, Responsivo, Brincalhão, Ativo, Gentil \nAltura: Macho: 21–25 cm, Feminino: 20–23 cm \nPeso: Macho: 3–4 kg, Feminino: 3–4 kg",
+        "image": "https://images.dog.ceo/breeds/maltese/n02085936_1288.jpg",
         "favorite": false
-    }
+    },
+    {
+        "name" : "Doberman",
+        "descripition": "O dobermann é um cão de porte médio a grande, com uma estrutura compacta, com resistência atlética e velocidade. O dobermann tem um temperamento obediente, é vigilante e determinado. Esta raça foi originalmente concebida como cão de guarda pessoal, os machos têm uma aparência musculosa e nobre, as fêmeas são mais elegantes.",
+        "image": "https://images.dog.ceo/breeds/doberman/n02107142_4790.jpg",
+        "favorite": true
+    },
+    {
+        "name" : "Pinscher Miniatura",
+        "descripition": "A pinscher miniatura é uma raça canina de pequeno porte do grupo pinscher e é oriunda da Alemanha. Possui duas variedades de cores, ambas sem marcas brancas. \nExpectativa de Vida: 15 anos \nOrigem: Alemanha \nCores: Vermelho-cervo, Marrom-avermelhado, Preto e canela, Preto e Ferrugem, Chocolate e castanho\nPersonalidade: Astuto, Energético, Responsivo, Extrovertido, Brincalhão, Amigável\nAltura: Macho: 25–30 cm, Feminino: 25–28 cm\nPeso: Macho: 4–5 kg, Feminino: 3,5–5 kg",
+        "image": "https://images.dog.ceo/breeds/pinscher-miniature/n02107312_6129.jpg",
+        "favorite": true
+    },
+    {
+           "name" : "ERRINHO",
+           "descripition": "Very Friendly",
+           "image": "https://images.dog.ceo/breeds/retri/n02099601_864.jpg",
+           "favorite": true
+       }
 ]

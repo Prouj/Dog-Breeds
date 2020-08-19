@@ -21,6 +21,7 @@
 		A41D9C7624E55BB5009693E8 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41D9C7524E55BB5009693E8 /* InitialViewController.swift */; };
 		A41D9C7924E793BB009693E8 /* LoaderAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41D9C7824E793BB009693E8 /* LoaderAPI.swift */; };
 		A467996824E8B1C000C6C311 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467996724E8B1C000C6C311 /* HeaderView.swift */; };
+		A4BB5D9424EAB4EC00BE6359 /* InformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BB5D9324EAB4EC00BE6359 /* InformationTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		A41D9C7524E55BB5009693E8 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		A41D9C7824E793BB009693E8 /* LoaderAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoaderAPI.swift; path = ../../../Documents/LoaderAPI.swift; sourceTree = "<group>"; };
 		A467996724E8B1C000C6C311 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		A4BB5D9324EAB4EC00BE6359 /* InformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				A467996724E8B1C000C6C311 /* HeaderView.swift */,
+				A4BB5D9324EAB4EC00BE6359 /* InformationTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 			files = (
 				A40A743E24E492690070B1A9 /* Breeds.swift in Sources */,
 				A40A743C24E490E10070B1A9 /* LoaderJson.swift in Sources */,
+				A4BB5D9424EAB4EC00BE6359 /* InformationTableViewCell.swift in Sources */,
 				A40A740B24E423230070B1A9 /* BreedsDescriptionsViewController.swift in Sources */,
 				A467996824E8B1C000C6C311 /* HeaderView.swift in Sources */,
 				A41D9C7924E793BB009693E8 /* LoaderAPI.swift in Sources */,

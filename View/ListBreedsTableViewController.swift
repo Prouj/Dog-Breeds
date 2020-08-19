@@ -17,7 +17,7 @@ class ListBreedsViewController: UIViewController, UISearchBarDelegate {
     var breeds = LoaderJson().itemData //Todos os dados do Json
     var item = Breeds() //Salva os dados do item que vai ser passado pra tela de descrição
     var breedsData = LoaderJson().itemData //Dados dos itens que vão ser carregados na tableView (altera de acordo com a pesquisa)
-    var section:Int?
+    var section: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,14 +25,14 @@ class ListBreedsViewController: UIViewController, UISearchBarDelegate {
         view.backgroundColor = .white
         
         loadSection()
-        configureTableView()
-        configureSearch()
         NavButton()
+        configureSearch()
+        configureTableView()
         configSegmentedControl()
-//        loadSection()
+      
     }
     
-     //Cria um botão
+    //Cria um botão
     func NavButton() {
         let Button = UIButton(type: .custom)
         Button.frame = CGRect(x: 0.0, y: 0.0, width: 50, height: 50)
@@ -45,7 +45,7 @@ class ListBreedsViewController: UIViewController, UISearchBarDelegate {
         currWidth?.isActive = true
         let currHeight = BarButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         currHeight?.isActive = true
-        title = "Dog Breeds"
+        navigationItem.title = "Dog Breeds"
         self.navigationItem.rightBarButtonItem = BarButton
         navigationItem.hidesBackButton = true
     }
@@ -68,10 +68,10 @@ class ListBreedsViewController: UIViewController, UISearchBarDelegate {
         setTableViewDelegates()
         tableView.rowHeight = 50
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        tableView.leadingAnchor.constraint(equalTo:view.leadingAnchor, constant: 0).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        tableView.topAnchor.constraint(equalTo: search.bottomAnchor,constant: 16).isActive = true
+        tableView.leadingAnchor.constraint(equalTo:view.leadingAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
 
     func setTableViewDelegates() {
@@ -88,13 +88,11 @@ class ListBreedsViewController: UIViewController, UISearchBarDelegate {
         search.backgroundImage = UIImage()
 //        search.showsCancelButton = false
         search.delegate = self
-//        tableView.tableHeaderView = search
-        navigationItem.titleView = search
-//        search.translatesAutoresizingMaskIntoConstraints = false
-//        search.topAnchor.constraint(equalTo: self.segmentedControl.topAnchor, constant: 0).isActive = true
-//        search.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-//        search.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-//        search.bottomAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 0).isActive = true
+        search.translatesAutoresizingMaskIntoConstraints = false
+        search.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        search.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        search.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+
 //        let tapKey: UIGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(Keyboard))
 //        view.addGestureRecognizer(tapKey)
     }
@@ -102,32 +100,24 @@ class ListBreedsViewController: UIViewController, UISearchBarDelegate {
 //    @objc func Keyboard() {
 //        view.endEditing(true)
 //    }
-    
-    
-//    let tl = BreedsDescriptionsViewController()
-//    
-//    override func prepare(for segue: tl, sender: Any?) {
-//        let descricao = segue.destination as! BreedsDescriptionViewController
-//        descricao.item = item
-//    }
-    
+
     
     func configSegmentedControl() {
         let section = ["Todos", "Favoritos"]
         segmentedControl = UISegmentedControl(items: section)
-        segmentedControl.backgroundColor = UIColor(red: 250/255, green: 240/255, blue: 197/255, alpha: 1)
-        segmentedControl.selectedSegmentTintColor = UIColor(red: 220/255, green: 141/255, blue: 75/255, alpha: 1)
+        segmentedControl.backgroundColor = UIColor(red: 255/255, green: 240/255, blue: 210/255, alpha: 1)
+        segmentedControl.selectedSegmentTintColor = UIColor(red: 217/255, green: 124/255, blue: 46/255, alpha: 1)
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         tableView.tableHeaderView = segmentedControl
-//        view.addSubview(segmentedControl)
-//        segmentedControl.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).isActive = true
         segmentedControl.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor).isActive = true
         segmentedControl.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor).isActive = true
-//        segmentedControl.bottomAnchor.constraint(equalTo: self.search.bottomAnchor, constant: 10).isActive = true
-
-//        segmentedControl.addTarget(self, action: <#T##Selector#>, for: <#T##UIControl.Event#>)
+    
+//        segmentedControl.addTarget(self, action: segmentedButtomTapped, for: <#T##UIControl.Event#>)
+//        loadSection()
     }
+    
+//    func segmentedButtomTapped
     
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -161,8 +151,8 @@ class ListBreedsViewController: UIViewController, UISearchBarDelegate {
 
            //carrega o escopo e os dados que vão aparecer na table view
            func loadSection() {
-               self.searchBar(search, selectedScopeButtonIndexDidChange: section ?? 0)
-               search.selectedScopeButtonIndex = section ?? 0
+               self.searchBar(search, selectedScopeButtonIndexDidChange: 0)
+               search.selectedScopeButtonIndex = 0
                tableView.reloadData()
            }
 }
@@ -179,9 +169,10 @@ extension ListBreedsViewController: UITableViewDelegate, UITableViewDataSource {
 
         self.item = breedsData[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
-//        performSegue(withIdentifier: "", sender: self)
         let vc = BreedsDescriptionsViewController()
+        vc.item = self.item
         self.navigationController?.pushViewController(vc, animated: false)
+        
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -193,8 +184,6 @@ extension ListBreedsViewController: UITableViewDelegate, UITableViewDataSource {
         }
 
         cell.textLabel?.text = breedsData[indexPath.row].name //Indica qual nome do array será printado
-
-//       cell.textLabel?.textColor = UIColor(red: 0.308, green: 0.14, blue: 0.356, alpha: 100) //Muda a cor dos Títulos
 
         let indicator = UIImage(named: "Indicator.pdf")  // Importa uma imagem personalizada do diclosureIndicator, pois o mesmo não pode ser editado
         cell.accessoryType = .disclosureIndicator

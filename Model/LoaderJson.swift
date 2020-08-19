@@ -14,15 +14,9 @@ public class LoaderJson {
 
     let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     let mainDirectory = Bundle.main.resourceURL!
-//    let defaults = UserDefaults.standard
 
     init(){
-//        if defaults.bool(forKey: "First Launch") == true {
-//            defaults.set(true, forKey: "First Launch")
-//        } else {
-//            loadInicial()
-//            defaults.set(true, forKey: "First Launch")
-//        }
+        
         load()
         sort()
     }
