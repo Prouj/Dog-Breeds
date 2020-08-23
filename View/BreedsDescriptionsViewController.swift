@@ -27,10 +27,6 @@ class BreedsDescriptionsViewController: UIViewController {
  
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
-    
     //Make the button on the NavigatinBar
     func navButton() {
         
@@ -44,7 +40,6 @@ class BreedsDescriptionsViewController: UIViewController {
             favButton.setImage(UIImage(named: "FavoriteSelected"), for: .normal)
         }
         
-//        favButton.setImage(UIImage(named:"Favorite"), for: .normal)
         favButton.addTarget(self, action: #selector(myRightSideBarButtonItemTapped(favButton:_:)), for: UIControl.Event.touchUpInside)
         self.navigationController?.navigationBar.tintColor = UIColor(red: 199/255, green: 81/255, blue: 46/255, alpha: 1)
         
@@ -79,49 +74,122 @@ class BreedsDescriptionsViewController: UIViewController {
          LoaderJson().save(update: data2)
     }
     
-    func configureTableHeader(){
+    func configureTableHeader() {
         let tableHeader = HeaderView(frame: CGRect(x:0, y: 0, width: view.frame.size.width, height: 300))
         tableHeader.configImage(breeds: item)
         tableview.tableHeaderView = tableHeader
     }
     
-   
-    
-    func configureTableView(){
+    func configureTableView() {
         view.addSubview(tableview)
         setTableViewDelegates()
-        tableview.rowHeight = 100
+//        tableview.rowHeight = 300
         tableview.translatesAutoresizingMaskIntoConstraints = false
         tableview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         tableview.leadingAnchor.constraint(equalTo:view.leadingAnchor).isActive = true
         tableview.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableview.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        tableview.sectionHeaderHeight = 100
+        tableview.sectionHeaderHeight = 300
         tableview.allowsSelection = false
         tableview.separatorStyle = .none
         tableview.contentInsetAdjustmentBehavior = .never
-
     }
 
-    func setTableViewDelegates(){
+    func setTableViewDelegates() {
         tableview.delegate = self
         tableview.dataSource = self
     }
-
-
 }
 
 extension BreedsDescriptionsViewController: UITableViewDelegate, UITableViewDataSource {
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
-
-        }
+       }
+   
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return 15
+       }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = InformationTableViewCell()
-        cell.configCell(breed: item)
+        let cell = UITableViewCell()
+        
+        switch indexPath.row {
+        case 0:
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 28, weight: .semibold)
+            cell.textLabel?.text = item.name
+        case 1:
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+            cell.textLabel?.text = item.descripition
+        case 2:
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+            cell.textLabel?.text = "Origem"
+        case 3:
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+            cell.textLabel?.text = item.origem
+        case 4:
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+            cell.textLabel?.text = "Expectativa de vida"
+        case 5:
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+            cell.textLabel?.text = item.vida
+        case 6:
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+            cell.textLabel?.text = "Altura"
+        case 7:
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+            cell.textLabel?.text = item.altura
+        case 8:
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+            cell.textLabel?.text = "Peso"
+        case 9:
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+            cell.textLabel?.text = item.peso
+        case 10:
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+            cell.textLabel?.text = "Cor"
+        case 11:
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+            cell.textLabel?.text = item.cores
+        case 12:
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+            cell.textLabel?.text = "Personalidade"
+        case 13:
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+            cell.textLabel?.text = item.personalidade
+        case 14:
+            cell.textLabel?.numberOfLines = 0
+             cell.textLabel?.font = UIFont.systemFont(ofSize: 13, weight: .regular)
+            cell.textLabel?.text = item.source
+        default:
+            break
+        }
+        
+//        switch indexPath.section {
+//        case 0:
+//            let cell = InformationTableViewCell()
+//        cell.configCell(breed: item)
+//            return cell
+//        case 1:
+//            let cell = MoreInormationTableViewController()
+//            cell.configCell(breed: item, row: indexPath.row)
+//            return cell
+//        default:
+//            return UITableViewCell()
+//        }
         return cell
-//        return UITableViewCell()
     }
 }

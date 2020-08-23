@@ -16,6 +16,7 @@ class HeaderView: UIView {
         super.init(frame: frame)
         addSubview(imageView)
         configureImageView()
+        imageView.contentMode = .scaleAspectFill
     }
     
     required init?(coder: NSCoder) {
@@ -24,24 +25,21 @@ class HeaderView: UIView {
 
     
     func configImage(breeds: Breeds){
-        let url = breeds.image!
+        let url = breeds.image ?? "Erro"
             
         let task = URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { data, response, error in
                 
             guard let data = data, error == nil else {
+                DispatchQueue.main.async {
+                    self.imageView.image = UIImage(named: "Erro")
+                }
                 print("Ocorreu um erro")
                 return
             }
             
-            do{
                 DispatchQueue.main.async {
                     self.imageView.image = UIImage(data: data)
                 }
-            }
-            catch {
-                self.imageView.image = UIImage(named: "Erro")
-            }
-           
         
         })
             
@@ -49,6 +47,7 @@ class HeaderView: UIView {
     }
     
     func configureImageView(){
+        
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true

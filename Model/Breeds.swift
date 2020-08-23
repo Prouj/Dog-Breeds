@@ -12,6 +12,13 @@ import Foundation
 struct Breeds: Codable {
     var name: String?
     var descripition: String?
+    var vida: String?
+    var origem: String?
+    var altura: String?
+    var peso: String?
+    var cores: String?
+    var personalidade: String?
+    var source: String?
     var image: String?
     var favorite: Bool?
 }

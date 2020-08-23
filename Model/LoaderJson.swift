@@ -20,7 +20,7 @@ public class LoaderJson {
         load()
         sort()
     }
-//
+    //
     func loadInicial() {
         if let fileLocation = Bundle.main.url(forResource: "Descripitions", withExtension: "json") {
             do{
@@ -60,10 +60,10 @@ public class LoaderJson {
             let data = Data(json!.utf8)
 
             do {
-                if FileManager.default.fileExists(atPath: directory.appendingPathComponent("Descriptions.json").relativePath) {
-                    try data.write(to: URL(fileURLWithPath: directory.appendingPathComponent("Descriptions.json").relativePath))
+                if FileManager.default.fileExists(atPath: mainDirectory.appendingPathComponent("Descriptions.json").relativePath) {
+                    try data.write(to: URL(fileURLWithPath: mainDirectory.appendingPathComponent("Descriptions.json").relativePath))
                 } else {
-                    FileManager.default.createFile(atPath: directory.appendingPathComponent("Descriptions.json").relativePath, contents: data, attributes: [:])
+                    FileManager.default.createFile(atPath: mainDirectory.appendingPathComponent("Descriptions.json").relativePath, contents: data, attributes: [:])
                 }
 
                 load()

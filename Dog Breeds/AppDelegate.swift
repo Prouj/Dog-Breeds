@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         UserDefaults.standard.set(false, forKey: "First Launch")
         //Override point for customization after application launch.
-        
+//        
         return true
     }
 

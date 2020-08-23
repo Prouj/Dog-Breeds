@@ -17,7 +17,7 @@ class ListBreedsViewController: UIViewController, UISearchBarDelegate {
     var breeds = LoaderJson().itemData //Todos os dados do Json
     var item = Breeds() //Salva os dados do item que vai ser passado pra tela de descrição
     var breedsData = LoaderJson().itemData //Dados dos itens que vão ser carregados na tableView (altera de acordo com a pesquisa)
-    var section: Int?
+    var section: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,16 +29,17 @@ class ListBreedsViewController: UIViewController, UISearchBarDelegate {
         configureSearch()
         configureTableView()
         configSegmentedControl()
-      
+//        navigationItem.title = "Dog Breeds"
+        
     }
     
-    //Cria um botão
+    //Creates the button
     func NavButton() {
         let Button = UIButton(type: .custom)
         Button.frame = CGRect(x: 0.0, y: 0.0, width: 50, height: 50)
         Button.setImage(UIImage(named:"collection"), for: .normal)
         Button.addTarget(self, action: #selector(myRightSideBarButtonItemTapped), for: UIControl.Event.touchUpInside)
-                 
+
         // Seta o botão modelo como um botão da Navigation Bar
         let BarButton = UIBarButtonItem(customView: Button)
         let currWidth = BarButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -81,18 +82,16 @@ class ListBreedsViewController: UIViewController, UISearchBarDelegate {
     
     func configureSearch() {
         view.addSubview(search)
-
         search.placeholder = " Pesquise..."
         search.sizeToFit()
         search.isTranslucent = false
         search.backgroundImage = UIImage()
-//        search.showsCancelButton = false
+        search.showsCancelButton = false
         search.delegate = self
         search.translatesAutoresizingMaskIntoConstraints = false
         search.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         search.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         search.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-
 //        let tapKey: UIGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(Keyboard))
 //        view.addGestureRecognizer(tapKey)
     }
@@ -113,19 +112,27 @@ class ListBreedsViewController: UIViewController, UISearchBarDelegate {
         segmentedControl.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor).isActive = true
         segmentedControl.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor).isActive = true
     
-//        segmentedControl.addTarget(self, action: segmentedButtomTapped, for: <#T##UIControl.Event#>)
-//        loadSection()
+       segmentedControl.addTarget(self, action: #selector(ListBreedsViewController.segmentedButtomTapped(sender:)), for: .valueChanged)
+        loadSection()
     }
     
-//    func segmentedButtomTapped
+    @objc func segmentedButtomTapped(sender: UISegmentedControl) {
+        if section == 0 {
+            section = 1
+            loadSection()
+        } else {
+            section = 0
+            loadSection()
+        }
+    }
     
-    
+    //Configuration of the search
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
-            self.searchBar(searchBar, selectedScopeButtonIndexDidChange: section!)
+            self.searchBar(searchBar, selectedScopeButtonIndexDidChange: section)
             tableView.reloadData()
         } else {
-            self.searchBar(searchBar, selectedScopeButtonIndexDidChange: section!)
+            self.searchBar(searchBar, selectedScopeButtonIndexDidChange: section)
             breedsData = breedsData.filter({ itemData -> Bool in itemData.name!.lowercased().contains(searchText.lowercased())
             })
         }
@@ -134,27 +141,27 @@ class ListBreedsViewController: UIViewController, UISearchBarDelegate {
     
     
 
-        func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-            switch selectedScope {
-            case 0:
-                breedsData = breeds
-            case 1:
-                breedsData = breeds.filter({ itemData -> Bool in
-                    itemData.favorite!
-                })
-            default:
-                break
-            }
-            section = selectedScope
-            tableView.reloadData()
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        switch selectedScope {
+        case 0:
+            breedsData = breeds
+        case 1:
+            breedsData = breeds.filter({ itemData -> Bool in
+                itemData.favorite!
+            })
+        default:
+            break
         }
-
-           //carrega o escopo e os dados que vão aparecer na table view
-           func loadSection() {
-               self.searchBar(search, selectedScopeButtonIndexDidChange: 0)
-               search.selectedScopeButtonIndex = 0
-               tableView.reloadData()
-           }
+        section = selectedScope
+        tableView.reloadData()
+    }
+    
+    //Load the scope and data that will appear in the table view
+    func loadSection() {
+        self.searchBar(search, selectedScopeButtonIndexDidChange: section)
+        search.selectedScopeButtonIndex = section
+        tableView.reloadData()
+    }
 }
 
 extension ListBreedsViewController: UITableViewDelegate, UITableViewDataSource {
