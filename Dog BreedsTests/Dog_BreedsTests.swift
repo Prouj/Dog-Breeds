@@ -18,7 +18,7 @@ class Dog_BreedsTests: XCTestCase {
         let output = data.itemData
         let count = output.count
 
-        XCTAssertEqual(count, 4)
+        XCTAssertEqual(count, 6)
     }
 
     func testTableForDescription() {
@@ -55,4 +55,18 @@ class Dog_BreedsTests: XCTestCase {
         XCTAssertNotNil(url)
         
     }
+    
+    func testNetworking2() {
+        
+        let headerView = CustomCell()
+        let collection = InitialViewController()
+        
+        let item = collection.item
+        
+        let url = headerView.configImage(breeds: item)
+        
+        XCTAssertNotNil(url)
+        
+    }
+
 }

@@ -20,24 +20,8 @@ public class LoaderJson {
         load()
         sort()
     }
-    //
-    func loadInicial() {
-        if let fileLocation = Bundle.main.url(forResource: "Descripitions", withExtension: "json") {
-            do{
-                let data = try Data(contentsOf: fileLocation)
-                let jsonDecoder = JSONDecoder()
-                let dataFromJson = try jsonDecoder.decode([Breeds].self, from: data)
-
-                self.itemData = dataFromJson
-
-                save(update: self.itemData)
-            } catch {
-                print (error)
-            }
-        }
-    }
     
-    //Função que carrega o arquivo json
+    //Function 
     func load() {
 
         do {

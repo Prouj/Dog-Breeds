@@ -42,9 +42,9 @@ class InitialViewController: UIViewController, UISearchBarDelegate {
         collectionView.topAnchor.constraint(equalTo: search.bottomAnchor, constant: 20).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        collectionView.heightAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        collectionView.heightAnchor.constraint(equalToConstant: 450).isActive = true
+
         navButton()
-      
     }
 
     override func viewDidAppear(_ animated: Bool) {

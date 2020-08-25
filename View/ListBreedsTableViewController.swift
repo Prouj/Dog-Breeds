@@ -24,7 +24,7 @@ class ListBreedsViewController: UIViewController, UISearchBarDelegate {
         
         view.backgroundColor = .white
         
-        loadSection()
+//        loadSection()
         NavButton()
         configureSearch()
         configureTableView()
@@ -200,7 +200,6 @@ extension ListBreedsViewController: UITableViewDelegate, UITableViewDataSource {
 
     }
 }
-    
 
 
 

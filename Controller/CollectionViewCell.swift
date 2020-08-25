@@ -19,10 +19,20 @@ class CustomCell: UICollectionViewCell {
         return iv
     }()
     
+//    let view: UIView = {
+//        let mask = UIView()
+//        mask.backgroundColor = .white
+//        return mask
+//    }()
+    
+    
 //    let title: UILabel = {
 //        let tt = UILabel()
-//        tt.
-//    }
+//        tt.backgroundColor = .white
+//        tt.layer.cornerRadius = 20
+//        tt.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
+//        return tt
+//    }()
     
     func configImage(breeds: Breeds){
         
@@ -37,7 +47,6 @@ class CustomCell: UICollectionViewCell {
                 print("Ocorreu um erro")
                 return
             }
-            
                 DispatchQueue.main.async {
                     self.bg.image = UIImage(data: data)
                 }
@@ -45,7 +54,12 @@ class CustomCell: UICollectionViewCell {
         })
             
         task.resume()
+        
+//        title.text = breeds.name
+        
     }
+    
+    
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -56,6 +70,13 @@ class CustomCell: UICollectionViewCell {
         bg.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
         bg.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         bg.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        
+//        contentView.addSubview(title)
+//
+//        title.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+//        title.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+//        title.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+//        title.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
 
     }
     

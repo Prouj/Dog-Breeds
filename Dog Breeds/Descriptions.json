@@ -40,7 +40,7 @@
     },
     {
         "name" : "Pinscher Miniatura",
-        "descripition": "A pinscher miniatura é uma raça canina de pequeno porte do grupo pinscher e é oriunda da Alemanha. Possui duas variedades de cores, ambas sem marcas brancas.",
+        "descripition": "A pinscher miniatura é uma raça canina de pequeno porte do grupo pinscher e é oriunda da Alemanha.",
         "vida": "15 anos",
         "origem": "Alemanha",
         "altura": "Macho: 25–30 cm \nFeminino: 25–28 cm",
@@ -60,12 +60,12 @@
         "peso": "",
         "cores": "",
         "personalidade": "",
-        "image": "https://images.dog.ceo/breeds/retriever-golden/n02099601_864.jpg",
+        "image": "https://images.dog.ceo/breeds/labrador/n02099712_6823.jpg",
         "source": "Fonte: Wikipedia",
         "favorite": false
     },
     {
-        "name" : "Fila",
+        "name" : "Pug",
         "descripition": "",
         "vida": "",
         "origem": "",
@@ -73,7 +73,7 @@
         "peso": "",
         "cores": "",
         "personalidade": "",
-        "image": "https://images.dog.ceo/breeds/retriever-golden/n02099601_864.jpg",
+        "image": "https://images.dog.ceo/breeds/pug/n02110958_12611.jpg",
         "source": "Fonte: Wikipedia",
         "favorite": false
     },
